@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 01908b0e1517d244e9246921e49707d5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 970694214949440429
+    second: Maps_1_Platform&Base_0
+  - first:
+      213: 8878771216542248529
+    second: Maps_1_Platform&Base_1
+  - first:
+      213: 3166796166330836122
+    second: Maps_1_Platform&Base_2
+  - first:
+      213: 531387602700502237
+    second: Maps_1_Platform&Base_3
+  - first:
+      213: 8970431289925135311
+    second: Maps_1_Platform&Base_4
+  - first:
+      213: 5975915756306361552
+    second: Maps_1_Platform&Base_5
+  - first:
+      213: 97604855743173940
+    second: Maps_1_Platform&Base_6
+  - first:
+      213: 8605978303029313513
+    second: Maps_1_Platform&Base_7
+  - first:
+      213: -6979540240894521335
+    second: Maps_1_Platform&Base_8
+  - first:
+      213: 2703634418782336239
+    second: Maps_1_Platform&Base_9
+  - first:
+      213: -7296628562395329390
+    second: Maps_1_Platform&Base_10
+  - first:
+      213: 7149363134991055887
+    second: Maps_1_Platform&Base_11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_0
+      rect:
+        serializedVersion: 2
+        x: 766
+        y: 2886
+        width: 201
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab869bde39987d00800000000000000
+      internalID: 970694214949440429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_1
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 2959
+        width: 154
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15ea6f3316bb73b70800000000000000
+      internalID: 8878771216542248529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_2
+      rect:
+        serializedVersion: 2
+        x: 1905
+        y: 2919
+        width: 149
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a94e73ab558b2fb20800000000000000
+      internalID: 3166796166330836122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_3
+      rect:
+        serializedVersion: 2
+        x: 2391
+        y: 2884
+        width: 215
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd48201953edf5700800000000000000
+      internalID: 531387602700502237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_4
+      rect:
+        serializedVersion: 2
+        x: 1871
+        y: 2354
+        width: 175
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcb69061bbf5d7c70800000000000000
+      internalID: 8970431289925135311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_5
+      rect:
+        serializedVersion: 2
+        x: 3870
+        y: 1341
+        width: 1417
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0dcec46f7b7bee250800000000000000
+      internalID: 5975915756306361552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_6
+      rect:
+        serializedVersion: 2
+        x: 4458
+        y: 2215
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 435dce26913ca5100800000000000000
+      internalID: 97604855743173940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_7
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 245
+        width: 788
+        height: 937
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eff7c09ba39e6770800000000000000
+      internalID: 8605978303029313513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_8
+      rect:
+        serializedVersion: 2
+        x: 1635
+        y: 423
+        width: 419
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90010fd4121b32f90800000000000000
+      internalID: -6979540240894521335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_9
+      rect:
+        serializedVersion: 2
+        x: 2490
+        y: 435
+        width: 553
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe47a0eed2d358520800000000000000
+      internalID: 2703634418782336239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_10
+      rect:
+        serializedVersion: 2
+        x: 3037
+        y: 532
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29c05705bfa2dba90800000000000000
+      internalID: -7296628562395329390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_11
+      rect:
+        serializedVersion: 2
+        x: 3044
+        y: 525
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0c3a6f64e3a73360800000000000000
+      internalID: 7149363134991055887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Maps_1_Platform&Base_0: 970694214949440429
+      Maps_1_Platform&Base_1: 8878771216542248529
+      Maps_1_Platform&Base_10: -7296628562395329390
+      Maps_1_Platform&Base_11: 7149363134991055887
+      Maps_1_Platform&Base_2: 3166796166330836122
+      Maps_1_Platform&Base_3: 531387602700502237
+      Maps_1_Platform&Base_4: 8970431289925135311
+      Maps_1_Platform&Base_5: 5975915756306361552
+      Maps_1_Platform&Base_6: 97604855743173940
+      Maps_1_Platform&Base_7: 8605978303029313513
+      Maps_1_Platform&Base_8: -6979540240894521335
+      Maps_1_Platform&Base_9: 2703634418782336239
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

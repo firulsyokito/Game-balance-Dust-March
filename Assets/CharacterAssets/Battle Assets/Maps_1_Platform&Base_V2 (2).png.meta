@@ -1,0 +1,466 @@
+fileFormatVersion: 2
+guid: 9e47ec0695eee6b4598dc46f65131a68
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 787965826816636204
+    second: Maps_1_Platform&Base_V2 (2)_0
+  - first:
+      213: -8251506498762534334
+    second: Maps_1_Platform&Base_V2 (2)_1
+  - first:
+      213: -5882765897298749157
+    second: Maps_1_Platform&Base_V2 (2)_2
+  - first:
+      213: 4946294083653824548
+    second: Maps_1_Platform&Base_V2 (2)_3
+  - first:
+      213: -1506359289175565466
+    second: Maps_1_Platform&Base_V2 (2)_4
+  - first:
+      213: 1164641584176006712
+    second: Maps_1_Platform&Base_V2 (2)_5
+  - first:
+      213: 1644871788376202008
+    second: Maps_1_Platform&Base_V2 (2)_6
+  - first:
+      213: 6437671055843337617
+    second: Maps_1_Platform&Base_V2 (2)_7
+  - first:
+      213: -905166184658768571
+    second: Maps_1_Platform&Base_V2 (2)_8
+  - first:
+      213: -209904872195440304
+    second: Maps_1_Platform&Base_V2 (2)_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_0
+      rect:
+        serializedVersion: 2
+        x: 2043
+        y: 1757
+        width: 154
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 60.207344, y: -13.662864}
+        - {x: -2.4542758, y: 107}
+        - {x: -65.1159, y: 107}
+        - {x: -71.08367, y: 105.67415}
+        - {x: -77, y: 37.055367}
+        - {x: -77, y: -37.530266}
+        - {x: -29.309256, y: -106.14905}
+        - {x: 60.207344, y: -106.14905}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c257d82aeba6fea00800000000000000
+      internalID: 787965826816636204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_1
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 1395
+        width: 630
+        height: 374
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 194.30486, y: -82.778946}
+        - {x: 194.30486, y: 132.02768}
+        - {x: 191.32097, y: 140.97795}
+        - {x: 98.82048, y: 187}
+        - {x: -53.357735, y: 187}
+        - {x: -166.74542, y: 140.97795}
+        - {x: -273.5, y: -38.027565}
+        - {x: -273.5, y: -142.44745}
+        - {x: -187.63263, y: -187}
+        - {x: -2.6316626, y: -187}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2429e67ce82cc7d80800000000000000
+      internalID: -8251506498762534334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_2
+      rect:
+        serializedVersion: 2
+        x: 3937
+        y: 722
+        width: 1449
+        height: 963
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 332.46478, y: 38.734818}
+        - {x: 332.46478, y: 432.54697}
+        - {x: 271.5, y: 484.5}
+        - {x: -72.5, y: 484.5}
+        - {x: -404.5, y: 484.5}
+        - {x: -705.9278, y: 426.5801}
+        - {x: -705.9278, y: -35.850815}
+        - {x: -276.2481, y: -235.74031}
+        - {x: -207.6187, y: -235.74031}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b19d9baa5973c5ea0800000000000000
+      internalID: -5882765897298749157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_3
+      rect:
+        serializedVersion: 2
+        x: 4530
+        y: 1651
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4207dc23344c4a440800000000000000
+      internalID: 4946294083653824548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_4
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 831
+        width: 569
+        height: 677
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: -4.2038307, y: -251.98335}
+        - {x: 150.95828, y: 180.61331}
+        - {x: 150.95828, y: 338.5}
+        - {x: -102.67209, y: 338.5}
+        - {x: -114.607635, y: 276.08292}
+        - {x: -284.5, y: -69.99441}
+        - {x: -284.5, y: -335.51926}
+        - {x: -248.88254, y: -338.5}
+        - {x: -63.881565, y: -338.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b94902536581be0800000000000000
+      internalID: -1506359289175565466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_5
+      rect:
+        serializedVersion: 2
+        x: 1488
+        y: 1096
+        width: 201
+        height: 266
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 3.5164113, y: -130.1878}
+        - {x: 72.145805, y: 16.000038}
+        - {x: 72.145805, y: 27.933739}
+        - {x: 24.403618, y: 129.3702}
+        - {x: 9.484184, y: 133}
+        - {x: -26.322454, y: 133}
+        - {x: -100.5, y: 7.0497627}
+        - {x: -100.5, y: -133}
+        - {x: -11.403022, y: -133}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836857ba953a92010800000000000000
+      internalID: 1164641584176006712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_6
+      rect:
+        serializedVersion: 2
+        x: 2567
+        y: 922
+        width: 149
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 50.09156, y: 138.5}
+        - {x: -45.392815, y: 138.5}
+        - {x: -66.28002, y: 7.580111}
+        - {x: -74.5, y: -81.922646}
+        - {x: -74.5, y: -138.5}
+        - {x: 50.09156, y: -138.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b99373d22c3d610800000000000000
+      internalID: 1644871788376202008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_7
+      rect:
+        serializedVersion: 2
+        x: 1958
+        y: 665
+        width: 215
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 85.611176, y: -1.7955362}
+        - {x: 85.611176, y: 22.071867}
+        - {x: 43.83676, y: 147.37573}
+        - {x: 19.96567, y: 149}
+        - {x: -6.8893104, y: 149}
+        - {x: -21.808744, y: 138.42545}
+        - {x: -93.42202, y: 7.15474}
+        - {x: -107.5, y: -118.149124}
+        - {x: -107.5, y: -144.99995}
+        - {x: -105.35757, y: -147.98337}
+        - {x: -3.9054239, y: -147.98337}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1952b5097b3375950800000000000000
+      internalID: 6437671055843337617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_8
+      rect:
+        serializedVersion: 2
+        x: 3457
+        y: 509
+        width: 419
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 173.23262, y: -156.30383}
+        - {x: 173.23262, y: 198.72377}
+        - {x: 146.37764, y: 240}
+        - {x: -122.172165, y: 240}
+        - {x: -208.70488, y: 52.535934}
+        - {x: -208.70488, y: -239.83974}
+        - {x: 137.42598, y: -239.83974}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54de7bc96243073f0800000000000000
+      internalID: -905166184658768571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maps_1_Platform&Base_V2 (2)_9
+      rect:
+        serializedVersion: 2
+        x: 2374
+        y: 172
+        width: 175
+        height: 321
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape:
+      - - {x: 34.632862, y: -103.966835}
+        - {x: 34.632862, y: 69.07183}
+        - {x: -13.109323, y: 160.5}
+        - {x: -66.81928, y: 160.5}
+        - {x: -87.5, y: 42.221004}
+        - {x: -87.5, y: -160.5}
+        - {x: 28.66509, y: -160.5}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 051ca2081a4461df0800000000000000
+      internalID: -209904872195440304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 20c2ec34b7fdfec46b63442e2f0febf9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Maps_1_Platform&Base_V2 (2)_0: 787965826816636204
+      Maps_1_Platform&Base_V2 (2)_1: -8251506498762534334
+      Maps_1_Platform&Base_V2 (2)_2: -5882765897298749157
+      Maps_1_Platform&Base_V2 (2)_3: 4946294083653824548
+      Maps_1_Platform&Base_V2 (2)_4: -1506359289175565466
+      Maps_1_Platform&Base_V2 (2)_5: 1164641584176006712
+      Maps_1_Platform&Base_V2 (2)_6: 1644871788376202008
+      Maps_1_Platform&Base_V2 (2)_7: 6437671055843337617
+      Maps_1_Platform&Base_V2 (2)_8: -905166184658768571
+      Maps_1_Platform&Base_V2 (2)_9: -209904872195440304
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

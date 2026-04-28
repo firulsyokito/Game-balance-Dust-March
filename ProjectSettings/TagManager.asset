@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 3
+  tags:
+  - EnemyUnit
+  - PlayerUnit
+  - Bullet
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - WorldBorder
+  - Water
+  - UI
+  - Obstacle
+  - Unit
+  - 'CharacterPreview '
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2163810781
+    locked: 0
+  - name: Midground
+    uniqueID: 1514046205
+    locked: 0
+  - name: Foreground
+    uniqueID: 2592097503
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  - Layer 1
