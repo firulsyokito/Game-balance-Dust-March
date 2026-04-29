@@ -391,6 +391,7 @@ MonoBehaviour:
   connectedAreas:
   - {fileID: 802831435}
   - {fileID: 1324986195}
+  - {fileID: 1122139692}
   missionName: 
   difficulty: 3
   enemyPerWave: 0
