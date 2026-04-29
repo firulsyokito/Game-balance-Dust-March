@@ -7,6 +7,7 @@ public static class SquadTransferData
         public static List<OwnedCharacterData> activeSquad = new List<OwnedCharacterData>();
         public static bool playerWon = true;
         public static int pendingGoldReward = 0;
+        public static int pendingExpReward = 0;
         public static bool pendingResetAfterWin = false;
         public static bool justFinishedBattle = false;
         public static bool gameOverCheckEnabled = false;

@@ -18,6 +18,7 @@ public class AreaNode : MonoBehaviour
     public int enemyPerWave;
     public Sprite enemySprite;
     public int goldReward;
+    public int expReward;
 
     [Header("UI References")]
     public Button button;
@@ -44,20 +45,24 @@ public class AreaNode : MonoBehaviour
         switch (difficulty)
         {
             case DifficultyLevel.Easy:
-                enemyPerWave = Random.Range(1, 2);
-                goldReward = Random.Range(100, 200);
+                enemyPerWave = 2;
+                goldReward = Random.Range(200, 400);
+                expReward = 100;
                 break;
             case DifficultyLevel.Medium:
                 enemyPerWave = Random.Range(4, 5);
-                goldReward = Random.Range(250, 450);
+                goldReward = Random.Range(450, 650);
+                expReward = 200;
                 break;
             case DifficultyLevel.Hard:
                 enemyPerWave = Random.Range(6, 7);
-                goldReward = Random.Range(450, 650);
+                goldReward = Random.Range(650, 850);
+                expReward = 400;
                 break;
             case DifficultyLevel.Final:
                 enemyPerWave = 8;
                 goldReward = 1000;
+                expReward = 800;
                 break;
         }
     }

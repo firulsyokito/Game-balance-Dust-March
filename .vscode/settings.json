@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "RTS-RI-Project-1.sln"
+    "dotnet.defaultSolution": "Game-balance-Dust-March.sln"
 }

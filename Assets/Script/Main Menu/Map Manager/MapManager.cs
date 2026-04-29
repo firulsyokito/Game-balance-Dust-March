@@ -248,6 +248,7 @@ public class MapManager : MonoBehaviour
 
                 area.enemyPerWave = state.enemyPerWave;
                 area.goldReward = state.goldReward;
+                area.expReward = state.expReward;
             }
 
             area.UpdateMapLabels();
@@ -355,6 +356,7 @@ public class MapManager : MonoBehaviour
         SquadSaveManager.SaveSquad(SquadManager.Instance.GetSquadForBattle());
         SaveManager.SaveInventory(InventoryManager.Instance.ownedCharacters);
         SquadTransferData.pendingGoldReward = selectedArea.goldReward;
+        SquadTransferData.pendingExpReward = selectedArea.expReward;
         WaveSpawner.enemyPerWave = selectedArea.enemyPerWave;
 
     int sceneToLoad = 2; // default jika tidak sesuai
@@ -408,7 +410,8 @@ public class MapManager : MonoBehaviour
                 missionName = area.missionName,
                 difficulty = area.difficulty.ToString(),
                 enemyPerWave = area.enemyPerWave,
-                goldReward = area.goldReward
+                goldReward = area.goldReward,
+                expReward = area.expReward
             });
         }
 

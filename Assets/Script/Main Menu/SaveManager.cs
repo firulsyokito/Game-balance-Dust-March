@@ -20,6 +20,7 @@ public class AreaState
     public string difficulty;
     public int enemyPerWave;
     public int goldReward;
+    public int expReward;
 }
 
 

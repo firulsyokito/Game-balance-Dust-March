@@ -61,7 +61,8 @@ public class GameOverManager : MonoBehaviour
 
     private void ProcessBattleResult(bool won)
     {
-        int expReward = won ? 200 : 50;
+        int baseExpReward = SquadTransferData.pendingExpReward;
+        int expReward = won ? baseExpReward : Mathf.RoundToInt(baseExpReward * 0.25f);
 
         foreach (var unit in UnitStats.allUnits)
         {
@@ -80,7 +81,16 @@ public class GameOverManager : MonoBehaviour
                     data.attack += 1;
                     data.hp += 3;
 
-                    data.expToNextLevel *= 2; // kebutuhan exp makin lama
+                    // Logika threshold baru: 
+                    // 1-10 nambah 50, 11 keatas nambah 500
+                    if (data.level <= 10)
+                    {
+                        data.expToNextLevel += 50;
+                    }
+                    else
+                    {
+                        data.expToNextLevel += 500;
+                    }
                 }
             }
         }

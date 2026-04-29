@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class WaveSpawner : MonoBehaviour
     [System.Serializable]
     public class WaveSettings
     {
-        public GameObject[] enemyTypes;
+        public List<GameObject> enemyPrefabs;
         public int initialEnemyCount = 2;
         public float spawnDelay = 0.5f;
     }
@@ -57,9 +58,9 @@ public class WaveSpawner : MonoBehaviour
     {
         var config = wavePatterns[waveIndex % wavePatterns.Length];
 
-        if (config.enemyTypes == null || config.enemyTypes.Length == 0)
+        if (config.enemyPrefabs == null || config.enemyPrefabs.Count == 0)
         {
-            Debug.LogWarning("Wave skipped: No enemy types defined.");
+            Debug.LogWarning("Wave skipped: No enemy prefabs defined.");
             yield break;
         }
 
@@ -73,9 +74,11 @@ public class WaveSpawner : MonoBehaviour
             if (!PlayerBaseAlive || !EnemyBaseAlive)
                 yield break;
 
-            var enemyPrefab = config.enemyTypes[Random.Range(0, config.enemyTypes.Length)];
+            // Pick a random enemy from the list
+            var randomEnemyPrefab = config.enemyPrefabs[Random.Range(0, config.enemyPrefabs.Count)];
             var spawnPoint = enemySpawnPoints[Random.Range(0, enemySpawnPoints.Length)];
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            
+            Instantiate(randomEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
             yield return new WaitForSeconds(delay);
         }

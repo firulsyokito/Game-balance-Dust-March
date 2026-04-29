@@ -27,6 +27,8 @@ public class UnitSpawner : MonoBehaviour
                     charData.spd,
                     charData.range,
                     charData.fireRate,
+                    charData.critChance,
+                    charData.critMultiplier,
                     charData // sekarang langsung kirim OwnedCharacterData
                 );
             }

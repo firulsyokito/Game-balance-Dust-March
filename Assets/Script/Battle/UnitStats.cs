@@ -49,13 +49,15 @@ public class UnitStats : MonoBehaviour
         allUnits.Remove(this); // hapus dari daftar saat destroy
     }
 
-    public void SetStats(int hp, int atk, int spd, float range, float rate, OwnedCharacterData data)
+    public void SetStats(int hp, int atk, int spd, float range, float rate, float critC, float critM, OwnedCharacterData data)
     {
         maxHealth = hp;
         damage = atk;
         speed = spd;
         shootRange = range;
         fireRate = rate;
+        critChance = critC;
+        critMultiplier = critM;
 
         linkedCharacterData = data;
 

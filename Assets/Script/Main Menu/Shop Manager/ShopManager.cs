@@ -54,7 +54,8 @@ public class ShopManager : MonoBehaviour
         { "Strong", (c) => c.attack = Mathf.RoundToInt(c.attack * 1.2f) },
         { "Valiant", (c) => c.hp = Mathf.RoundToInt(c.hp * 1.15f) },
         { "Eagle Eyed", (c) => c.range *= 1.1f },
-        { "Positive", (c) => c.fireRate *= 0.9f }
+        { "Positive", (c) => c.fireRate *= 0.9f },
+        { "Lethal", (c) => c.critMultiplier += 0.5f }
     };
 
     private Dictionary<string, int> classCosts = new Dictionary<string, int>
@@ -114,24 +115,34 @@ public class ShopManager : MonoBehaviour
         float fireRate = 0f;
         int attack = 0;
         int hp = 0;
+        float critChance = 0.05f;
+        float critMultiplier = 2.0f;
 
         switch (selectedClass)
         {
             case "Marksman":
-                spd = 2; range = 18f; fireRate = 1.2f;
-                attack = Random.Range(40, 60); hp = Random.Range(50, 80);
+                spd = 2; range = 18f; fireRate = 1.8f;
+                attack = Random.Range(60, 80); hp = Random.Range(50, 80);
+                critChance = 0.50f;
+                critMultiplier = 2.5f;
                 break;
             case "Rifleman":
                 spd = 3; range = 10f; fireRate = 0.8f;
-                attack = Random.Range(20, 30); hp = Random.Range(100, 150);
+                attack = Random.Range(25, 35); hp = Random.Range(125, 175);
+                critChance = 0.10f;
+                critMultiplier = 2.0f;
                 break;
             case "Frontliner":
-                spd = 3; range = 5f; fireRate = 1.1f;
+                spd = 3; range = 5f; fireRate = 1.0f;
                 attack = Random.Range(20, 30); hp = Random.Range(275, 325);
+                critChance = 0.50f;
+                critMultiplier = 2.0f;
                 break;
             case "Rusher":
                 spd = 4; range = 8f; fireRate = 0.2f;
-                attack = Random.Range(8, 15); hp = Random.Range(125, 200);
+                attack = Random.Range(12, 20); hp = Random.Range(125, 200);
+                critChance = 0.10f;
+                critMultiplier = 2.0f;
                 break;
         }
 
@@ -158,6 +169,8 @@ public class ShopManager : MonoBehaviour
             spd = spd,
             range = range,
             fireRate = fireRate,
+            critChance = critChance,
+            critMultiplier = critMultiplier,
             availability = 3,
             maxAvailability = 3,
 

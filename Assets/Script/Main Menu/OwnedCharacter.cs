@@ -9,6 +9,8 @@ public class OwnedCharacterData
     public int spd;
     public float range;
     public float fireRate;
+    public float critChance;
+    public float critMultiplier;
     public string traits;
     public int availability;
     public int maxAvailability;
