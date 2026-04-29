@@ -17,7 +17,7 @@ public class OwnedCharacterData
     
     public bool isDead;
     public int experience; // EXP saat ini
-    public int expToNextLevel = 100; // kebutuhan EXP
+    public int expToNextLevel = 50; // kebutuhan EXP
 
     public string hairStyle;
     public string bodyStyle;

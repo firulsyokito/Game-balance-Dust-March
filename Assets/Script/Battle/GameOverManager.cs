@@ -85,7 +85,7 @@ public class GameOverManager : MonoBehaviour
                     // 1-10 nambah 50, 11 keatas nambah 500
                     if (data.level <= 10)
                     {
-                        data.expToNextLevel += 50;
+                        data.expToNextLevel += 25;
                     }
                     else
                     {
