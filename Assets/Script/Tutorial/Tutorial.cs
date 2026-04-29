@@ -35,7 +35,8 @@ public class Tutorial : MonoBehaviour
     public Button closeButton11;
 
 
-    private bool originalUnlocked13;
+    private Color originalColor13;
+    private bool originalInteractable13;
     private bool originalUnlocked1;
     private bool originalUnlocked2;
     private bool hasClosedMapExplanation4 = false;
@@ -50,19 +51,47 @@ public class Tutorial : MonoBehaviour
 
     private void Start()
     {
+        // Cek apakah ini New Game
+        bool isNewGame = PlayerPrefs.GetInt("IsNewGame", 0) == 1;
+
+        if (!isNewGame)
+        {
+            // Jika bukan New Game, matikan semua panel tutorial dan hentikan script
+            mapExplanationPanel.SetActive(false);
+            mapExplanationPanel2.SetActive(false);
+            mapExplanationPanel3.SetActive(false);
+            mapExplanationPanel4.SetActive(false);
+            mapExplanationPanel5.SetActive(false);
+            mapExplanationPanel6.SetActive(false);
+            mapExplanationPanel7.SetActive(false);
+            mapExplanationPanel8.SetActive(false);
+            mapExplanationPanel9.SetActive(false);
+            mapExplanationPanel10.SetActive(false);
+            mapExplanationPanel11.SetActive(false);
+            this.enabled = false;
+            return;
+        }
+
+        // Reset flag New Game agar tidak muncul lagi di load berikutnya
+        PlayerPrefs.SetInt("IsNewGame", 0);
+        PlayerPrefs.Save();
+
         // Simpan kondisi awal
-        originalUnlocked13 = area13.isUnlocked;
+        originalColor13 = area13.image.color;
+        originalInteractable13 = area13.button.interactable;
         originalUnlocked1 = area1.isUnlocked;
         originalUnlocked2 = area2.isUnlocked;
 
-        // Tampilkan panel
+        // Tampilkan panel pertama
         mapExplanationPanel.SetActive(true);
 
-        // Atur area 13 → unlock + sorting order lebih tinggi
-        area13.Unlock();
+        // Paksa visual terbuka untuk Area 13 (tanpa mengubah data isUnlocked)
+        area13.enabled = false;
+        area13.image.color = Color.white; 
+        area13.button.interactable = true;
         area13Canvas.sortingOrder = 2;
 
-        // Lock area 1 & 2
+        // Lock area 1 & 2 secara visual
         area1.isUnlocked = false;
         area1.UpdateVisual();
 
@@ -84,9 +113,11 @@ public class Tutorial : MonoBehaviour
     {
         mapExplanationPanel.SetActive(false);
 
-        area13.isUnlocked = originalUnlocked13;
+        // Kembalikan visual area 13 ke semula
+        area13.enabled = true;
+        area13.image.color = originalColor13;
+        area13.button.interactable = originalInteractable13;
         area13Canvas.sortingOrder = 0;
-        area13.UpdateVisual();
 
         area0Canvas.sortingOrder = 1;
         area0.UpdateVisual();

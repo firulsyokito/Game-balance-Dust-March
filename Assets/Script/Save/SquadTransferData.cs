@@ -11,6 +11,7 @@ public static class SquadTransferData
         public static bool pendingResetAfterWin = false;
         public static bool justFinishedBattle = false;
         public static bool gameOverCheckEnabled = false;
+        public static bool isNewGame = false;
 
         public static List<OwnedCharacterData> removedCharacters = new List<OwnedCharacterData>();
 }
