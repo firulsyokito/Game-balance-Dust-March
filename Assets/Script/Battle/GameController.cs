@@ -116,12 +116,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void OnInputHold(Vector2 screenPos)
+    private void OnInputHold(Vector2 currentPos)
     {
         // Check if we need to start drag-selection
         if (!isSelecting)
         {
-            float dist = Vector2.Distance(screenPos, inputStartPos);
+            float dist = Vector2.Distance(currentPos, inputStartPos);
             if (dist >= dragStartDistance)
             {
                 isSelecting = true;
@@ -132,7 +132,7 @@ public class GameController : MonoBehaviour
         // If drag-selection has started, update selection box
         if (isSelecting)
         {
-            UpdateSelection(screenPos);
+            UpdateSelection(currentPos);
         }
     }
 
@@ -167,12 +167,10 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void UpdateSelection(Vector2 screenPos)
+    private void UpdateSelection(Vector2 currentPos)
     {
-        Vector2 worldStart = mainCamera.ScreenToWorldPoint(inputStartPos);
-        Vector2 worldEnd = mainCamera.ScreenToWorldPoint(screenPos);
-        Vector2 min = Vector2.Min(worldStart, worldEnd);
-        Vector2 max = Vector2.Max(worldStart, worldEnd);
+        Vector2 min = Vector2.Min(inputStartPos, currentPos);
+        Vector2 max = Vector2.Max(inputStartPos, currentPos);
 
         selectionAreaTransform.position = min;
         selectionAreaTransform.localScale = max - min;

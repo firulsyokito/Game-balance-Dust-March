@@ -7,9 +7,8 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class CameraSystem : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public int touchesNumber = 2;
     public float moveSpeed = 15f;
-    public float followSpeed = 10f;
+    public float smoothTime = 0.1f;
     public float edgeThreshold = 10f;
 
     [Header("Bounds")]
@@ -20,11 +19,22 @@ public class CameraSystem : MonoBehaviour
     private Vector2 lastTouchPosition;
     private Vector2 lastMousePosition;
 
+    private float velocityX;
     private bool isTouchDragging;
     private bool isMouseDragging;
 
-    private void Awake() => EnhancedTouchSupport.Enable();
-    private void OnDestroy() => EnhancedTouchSupport.Disable();
+    private enum InputMethod { None, Touch, MouseDrag, KeyboardOrMouseEdge }
+    private InputMethod activeInput = InputMethod.None;
+
+    private void OnEnable()
+    {
+        EnhancedTouchSupport.Enable();
+    }
+
+    private void OnDisable()
+    {
+        EnhancedTouchSupport.Disable();
+    }
 
     private void Start()
     {
@@ -36,97 +46,148 @@ public class CameraSystem : MonoBehaviour
         if (!Application.isFocused) return;
 
         Vector3 moveDir = Vector3.zero;
+        var keyboard = Keyboard.current;
+        var mouse = Mouse.current;
+        bool hasKeyboard = keyboard != null && keyboard.enabled;
+        bool hasMouse = mouse != null && mouse.enabled;
 
-        bool touchUsed = ProcessTouchInput();
-        bool mouseUsed = ProcessMouseDrag();
+        if (TryHandleTouchInput())
+        {
+            SetInputMethod(InputMethod.Touch);
+        }
+        else if (hasMouse && mouse.rightButton.isPressed)
+        {
+            SetInputMethod(InputMethod.MouseDrag);
+        }
+        else if (IsKeyboardOrEdgeInput(hasKeyboard, hasMouse, keyboard, mouse))
+        {
+            SetInputMethod(InputMethod.KeyboardOrMouseEdge);
+        }
+        else
+        {
+            SetInputMethod(InputMethod.None);
+        }
 
-        ProcessKeyboardOrEdgeInput(ref moveDir);
+        HandleInput(ref moveDir);
 
-        targetPosition += moveDir * moveSpeed * Time.deltaTime;
+        if (activeInput == InputMethod.KeyboardOrMouseEdge)
+        {
+            targetPosition.x += moveDir.x * moveSpeed * Time.deltaTime;
+        }
+        else
+        {
+            targetPosition.x += velocityX * Time.deltaTime;
+        }
+
         targetPosition.x = Mathf.Clamp(targetPosition.x, startPosition, endPosition);
-
-        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 0.15f);
     }
 
-    private bool ProcessTouchInput()
+    private void SetInputMethod(InputMethod method)
     {
-        var touches = Touch.activeTouches;
-        if (touches.Count != touchesNumber)
+        if (activeInput != method)
+        {
+            activeInput = method;
+            velocityX = 0f;
+            isTouchDragging = false;
+            isMouseDragging = false;
+        }
+    }
+
+    private void HandleInput(ref Vector3 moveDir)
+    {
+        switch (activeInput)
+        {
+            case InputMethod.Touch:
+                ProcessTouchDrag();
+                break;
+            case InputMethod.MouseDrag:
+                ProcessMouseDrag();
+                break;
+            case InputMethod.KeyboardOrMouseEdge:
+                ProcessKeyboardOrMouseEdgeInput(ref moveDir);
+                break;
+            default:
+                velocityX = Mathf.Lerp(velocityX, 0f, smoothTime * Time.deltaTime);
+                break;
+        }
+    }
+
+    private bool TryHandleTouchInput()
+    {
+        if (Touch.activeTouches.Count == 0) return false;
+        var touch = Touch.activeTouches[0];
+        if (touch.phase == TouchPhase.Began)
+        {
+            lastTouchPosition = touch.screenPosition;
+            isTouchDragging = true;
+            velocityX = 0f;
+            return false; // don't immediately short-circuit; wait for movement
+        }
+        if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
         {
             isTouchDragging = false;
             return false;
         }
-
-        var touch = touches[0];
-        Vector2 currentPos = touch.screenPosition;
-
-        switch (touch.phase)
-        {
-            case TouchPhase.Began:
-                lastTouchPosition = currentPos;
-                isTouchDragging = true;
-                break;
-
-            case TouchPhase.Moved:
-            case TouchPhase.Stationary:
-                Vector2 delta = touch.delta;
-                float normalizedDeltaX = delta.x / Screen.width;
-                float moveAmount = -normalizedDeltaX * moveSpeed;
-                targetPosition.x += moveAmount;
-                break;
-
-            case TouchPhase.Ended:
-            case TouchPhase.Canceled:
-                isTouchDragging = false;
-                break;
-        }
-
-        return true;
+        return isTouchDragging;
     }
 
-    private bool ProcessMouseDrag()
+    private void ProcessTouchDrag()
+    {
+        if (!isTouchDragging || Touch.activeTouches.Count == 0) return;
+        var touch = Touch.activeTouches[0];
+        if (touch.phase == TouchPhase.Moved)
+        {
+            float dt = Mathf.Max(Time.deltaTime, 0.001f);
+            velocityX = -touch.delta.x / dt;
+            lastTouchPosition = touch.screenPosition;
+        }
+    }
+    
+    private void ProcessMouseDrag()
     {
         var mouse = Mouse.current;
         if (mouse == null || !mouse.rightButton.isPressed)
         {
             isMouseDragging = false;
-            return false;
+            activeInput = InputMethod.None;
+            return;
         }
 
         Vector2 currentPos = mouse.position.ReadValue();
         if (!isMouseDragging)
         {
             lastMousePosition = currentPos;
+            velocityX = 0f;
             isMouseDragging = true;
-            return true;
         }
 
         Vector2 delta = currentPos - lastMousePosition;
-        float normalizedDeltaX = delta.x / Screen.width;
-        float moveAmount = -normalizedDeltaX * moveSpeed;
-
-        targetPosition.x += moveAmount;
+        float dt = Mathf.Max(Time.deltaTime, 0.001f);
+        velocityX = -delta.x / dt * 0.01f;
         lastMousePosition = currentPos;
-
-        return true;
     }
 
-    private void ProcessKeyboardOrEdgeInput(ref Vector3 moveDir)
+    private void ProcessKeyboardOrMouseEdgeInput(ref Vector3 moveDir)
     {
-        var kb = Keyboard.current;
-        var mouse = Mouse.current;
-
-        if (kb != null)
+        if (Keyboard.current != null)
         {
-            if (kb.aKey.isPressed) moveDir.x -= 1;
-            if (kb.dKey.isPressed) moveDir.x += 1;
+            if (Keyboard.current.aKey.isPressed) moveDir.x -= 1;
+            if (Keyboard.current.dKey.isPressed) moveDir.x += 1;
         }
 
-        if (mouse != null)
+        if (Mouse.current != null)
         {
-            float x = mouse.position.ReadValue().x;
+            float x = Mouse.current.position.ReadValue().x;
             if (x <= edgeThreshold) moveDir.x -= 1;
             else if (x >= Screen.width - edgeThreshold) moveDir.x += 1;
         }
+    }
+
+    private bool IsKeyboardOrEdgeInput(bool hasKeyboard, bool hasMouse, Keyboard keyboard, Mouse mouse)
+    {
+        return (hasKeyboard && (keyboard.aKey.isPressed || keyboard.dKey.isPressed)) ||
+               (hasMouse && (mouse.position.ReadValue().x <= edgeThreshold ||
+                             mouse.position.ReadValue().x >= Screen.width - edgeThreshold));
     }
 }

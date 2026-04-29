@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager Instance;
+    public int purchasedCharacterCount = 0;
 
     [Header("Prefabs & Parents")]
     public GameObject characterItemPrefab;     
@@ -205,6 +206,19 @@ public class ShopManager : MonoBehaviour
     {
         InventoryManager.Instance?.AddCharacter(data);
         Debug.Log($"Purchased character: {data.characterName}");
+
+        // Tambah counter pembelian
+        purchasedCharacterCount++;
+
+        // Cek kalau sudah 4 kali beli
+        if (purchasedCharacterCount >= 4)
+        {
+            // Pastikan Tutorial.Instance ada
+            if (Tutorial.Instance != null)
+            {
+                Tutorial.Instance.TriggerCloseMapExplanation9();
+            }
+        }
     }
 
     public List<OwnedCharacterData> GetShopCharacters()
