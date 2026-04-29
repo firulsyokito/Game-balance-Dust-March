@@ -65,6 +65,8 @@ public class StartMenuController : MonoBehaviour
 
     public void OnNewGameClicked()
     {
+        PlayerPrefs.SetInt("IsNewGame", 1);
+        PlayerPrefs.Save();
         FadeIn();
         SaveManager.ResetAllSaves();
         Debug.Log("Save data has been reset.");
