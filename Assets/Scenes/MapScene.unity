@@ -396,6 +396,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 7507888}
   image: {fileID: 7507887}
   missionNameText: {fileID: 994429898}
@@ -725,7 +726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.x
@@ -733,15 +734,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -773,11 +774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 440
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1096,6 +1097,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 42457129}
   image: {fileID: 42457130}
   missionNameText: {fileID: 1695614964}
@@ -1379,6 +1381,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 43838159}
   image: {fileID: 43838160}
   missionNameText: {fileID: 1762983750}
@@ -2906,6 +2909,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 541951011915197286, guid: fb099eda8c5ec1a4eafc6c8f68d45002, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 125836839}
   image: {fileID: 125836840}
   missionNameText: {fileID: 1159902054}
@@ -3243,6 +3247,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 158682740}
   image: {fileID: 158682741}
   missionNameText: {fileID: 1632533696}
@@ -5042,6 +5047,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 221475723}
   image: {fileID: 221475724}
   missionNameText: {fileID: 257602764}
@@ -7225,6 +7231,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 306421929}
   image: {fileID: 306421930}
   missionNameText: {fileID: 1885318047}
@@ -7749,7 +7756,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2
@@ -8347,7 +8354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.x
@@ -8355,15 +8362,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8395,11 +8402,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 700
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8894,7 +8901,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.x
@@ -8902,15 +8909,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8942,11 +8949,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 310
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9682,6 +9689,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 434303478}
   image: {fileID: 434303477}
   missionNameText: {fileID: 1030392839}
@@ -10696,6 +10704,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 496581935}
   image: {fileID: 496581936}
   missionNameText: {fileID: 165007226}
@@ -11685,6 +11694,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 548941285}
   image: {fileID: 548941286}
   missionNameText: {fileID: 552944994}
@@ -11833,6 +11843,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 541951011915197286, guid: fb099eda8c5ec1a4eafc6c8f68d45002, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 551170692}
   image: {fileID: 551170693}
   missionNameText: {fileID: 2018222737}
@@ -12113,6 +12124,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 552922541}
   image: {fileID: 552922542}
   missionNameText: {fileID: 73996594}
@@ -12404,6 +12416,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 555539454}
   image: {fileID: 555539455}
   missionNameText: {fileID: 847588677}
@@ -15929,7 +15942,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &785655815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16304,6 +16317,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 802831436}
   image: {fileID: 802831437}
   missionNameText: {fileID: 2054947757}
@@ -18245,6 +18259,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 875040384}
   image: {fileID: 875040385}
   missionNameText: {fileID: 804078493}
@@ -18726,7 +18741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.x
@@ -18734,15 +18749,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18774,11 +18789,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 570
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20628,6 +20643,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1000002106}
   image: {fileID: 1000002105}
   missionNameText: {fileID: 1165228487}
@@ -21031,6 +21047,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1021591900}
   image: {fileID: 1021591899}
   missionNameText: {fileID: 650779931}
@@ -23661,6 +23678,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1121170387}
   image: {fileID: 1121170388}
   missionNameText: {fileID: 1946068695}
@@ -23817,6 +23835,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 1000
+  expReward: 0
   button: {fileID: 1122139693}
   image: {fileID: 1122139694}
   missionNameText: {fileID: 513443792}
@@ -24676,6 +24695,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1159205467}
   image: {fileID: 1159205468}
   missionNameText: {fileID: 787989978}
@@ -26509,6 +26529,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 1000
+  expReward: 0
   button: {fileID: 1230373576}
   image: {fileID: 1230373577}
   missionNameText: {fileID: 1027658166}
@@ -27199,6 +27220,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1255261383}
   image: {fileID: 1255261384}
   missionNameText: {fileID: 1629297722}
@@ -27775,7 +27797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1306288385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27822,7 +27844,6 @@ MonoBehaviour:
   mapExplanationPanel: {fileID: 785655814}
   mapExplanationPanel2: {fileID: 1319751062}
   mapExplanationPanel3: {fileID: 1439110249}
-  mapExplanationPanel35: {fileID: 0}
   mapExplanationPanel4: {fileID: 2041656690}
   mapExplanationPanel5: {fileID: 406850776}
   mapExplanationPanel6: {fileID: 1983882062}
@@ -28311,6 +28332,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1324986197}
   image: {fileID: 1324986196}
   missionNameText: {fileID: 1778256862}
@@ -29840,7 +29862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1402344676
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34618,6 +34640,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1678424137}
   image: {fileID: 1678424136}
   missionNameText: {fileID: 126000342}
@@ -35116,6 +35139,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1687711979}
   image: {fileID: 1687711980}
   missionNameText: {fileID: 957196722}
@@ -36212,7 +36236,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.x
@@ -36220,15 +36244,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36260,11 +36284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -37350,7 +37374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1780584941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -38204,6 +38228,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 1846170249}
   image: {fileID: 1846170248}
   missionNameText: {fileID: 163789486}
@@ -42349,6 +42374,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 2025219795}
   image: {fileID: 2025219796}
   missionNameText: {fileID: 229353833}
@@ -43226,6 +43252,7 @@ MonoBehaviour:
   enemyPerWave: 0
   enemySprite: {fileID: 21300000, guid: 5a6fd72394a215c4588476d03a3056b0, type: 3}
   goldReward: 0
+  expReward: 0
   button: {fileID: 2074449743}
   image: {fileID: 2074449744}
   missionNameText: {fileID: 2064777621}
@@ -43569,7 +43596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.x
@@ -43577,15 +43604,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43617,11 +43644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6222534515799336479, guid: e7f89a33cd6f3084f95b462539997d57, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
