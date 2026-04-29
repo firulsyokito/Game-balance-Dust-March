@@ -4262,11 +4262,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 485544721}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1230492095 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1784451314154326675, guid: 0f6bd447d1509ec40b550959e77d8b32, type: 3}
-  m_PrefabInstance: {fileID: 1170018193}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1230492096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6344009145688185043, guid: 0f6bd447d1509ec40b550959e77d8b32, type: 3}
@@ -4630,19 +4625,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wavePatterns:
-  - enemyTypes:
+  - enemyPrefabs:
+    - {fileID: 4813841193368794108, guid: 401e42a54ae0b494ea3deea90c29c129, type: 3}
     - {fileID: 4813841193368794108, guid: 4a51eded8f2e3bc4f887406360dc9ca9, type: 3}
-    initialEnemyCount: 3
+    initialEnemyCount: 2
     spawnDelay: 0.5
   delayBetweenWaves: 10
   enemySpawnPoints:
-  - {fileID: 1464853114}
-  - {fileID: 1611602267}
-  - {fileID: 2017449407}
-  - {fileID: 307215821}
-  - {fileID: 153881126}
-  playerBase: {fileID: 1690013315}
-  enemyBase: {fileID: 1230492095}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerBase: {fileID: 0}
+  enemyBase: {fileID: 0}
 --- !u!1 &1373879092
 GameObject:
   m_ObjectHideFlags: 0
@@ -5526,11 +5522,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2aeca19add73fa45bd4a2ad8bac05fe, type: 3}
---- !u!1 &1690013315 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7062812360665158380, guid: 31dcb15daacca7d43be71697ac008809, type: 3}
-  m_PrefabInstance: {fileID: 1906237732}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1690013316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 670495249368884123, guid: 31dcb15daacca7d43be71697ac008809, type: 3}
