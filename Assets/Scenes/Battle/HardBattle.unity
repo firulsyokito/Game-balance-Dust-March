@@ -4229,6 +4229,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f6bd447d1509ec40b550959e77d8b32, type: 3}
+--- !u!1 &1170018194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1784451314154326675, guid: 0f6bd447d1509ec40b550959e77d8b32, type: 3}
+  m_PrefabInstance: {fileID: 1170018193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1173190417
 GameObject:
   m_ObjectHideFlags: 0
@@ -4704,13 +4709,13 @@ MonoBehaviour:
     spawnDelay: 0.5
   delayBetweenWaves: 10
   enemySpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerBase: {fileID: 0}
-  enemyBase: {fileID: 0}
+  - {fileID: 1464853114}
+  - {fileID: 1611602267}
+  - {fileID: 2017449407}
+  - {fileID: 307215821}
+  - {fileID: 153881126}
+  playerBase: {fileID: 1906237733}
+  enemyBase: {fileID: 1170018194}
 --- !u!1 &1373879092
 GameObject:
   m_ObjectHideFlags: 0
@@ -6272,6 +6277,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31dcb15daacca7d43be71697ac008809, type: 3}
+--- !u!1 &1906237733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7062812360665158380, guid: 31dcb15daacca7d43be71697ac008809, type: 3}
+  m_PrefabInstance: {fileID: 1906237732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1915677366
 GameObject:
   m_ObjectHideFlags: 0
