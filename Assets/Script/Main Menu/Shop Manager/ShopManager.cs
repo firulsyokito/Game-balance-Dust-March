@@ -123,7 +123,7 @@ public class ShopManager : MonoBehaviour
             case "Marksman":
                 spd = 2; range = 18f; fireRate = 1.8f;
                 attack = Random.Range(60, 80); hp = Random.Range(50, 80);
-                critChance = 0.50f;
+                critChance = 0.75f;
                 critMultiplier = 2.5f;
                 break;
             case "Rifleman":
