@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dust March - Game Balance Prototype</title>
+    <!-- Google Fonts: Outfit & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0c10;
+            --bg-card: rgba(20, 24, 33, 0.75);
+            --bg-card-hover: rgba(30, 37, 51, 0.9);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-primary: #ff5e00;
+            --accent-secondary: #00f0ff;
+            --text-primary: #f0f4f8;
+            --text-muted: #8a99ad;
+
+            /* Class Colors */
+            --color-marksman: #f5a623;
+            --color-frontliner: #ff3b30;
+            --color-rusher: #4cd964;
+            --color-rifleman: #007aff;
+            
+            /* Trait Colors */
+            --color-trait: #d63031;
+            --color-trait-valiant: #0984e3;
+            --color-trait-lethal: #e84393;
+            --color-trait-eagle: #fdcb6e;
+            --color-trait-positive: #00cec9;
+
+            --font-main: 'Outfit', sans-serif;
+            --font-mono: 'Space Grotesk', sans-serif;
+            --shadow-glow: 0 0 15px rgba(0, 240, 255, 0.25);
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 94, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 40%);
+        }
+
+        header {
+            background: rgba(10, 12, 16, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-title h1 {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: var(--font-main);
+        }
+
+        .resources-bar {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .resource-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        .resource-item.gold span {
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .resource-item.squad span {
+            color: var(--accent-secondary);
+            font-weight: bold;
+        }
+
+        /* Container Layout */
+        .container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            flex-grow: 1;
+            min-height: calc(100vh - 70px);
+        }
+
+        /* Roster Sidebar */
+        .sidebar {
+            background: rgba(15, 18, 25, 0.95);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+        }
+
+        .section-title {
+            font-family: var(--font-mono);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            border-left: 3px solid var(--accent-primary);
+            padding-left: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-squad-stats {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-muted);
+        }
+
+        .stat-row strong {
+            color: var(--text-primary);
+        }
+
+        .roster-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .unit-list-empty {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 2rem 0;
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+        }
+
+        /* Unit Cards */
+        .unit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .unit-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            background: var(--bg-card-hover);
+        }
+
+        .unit-card.active-squad-member {
+            border-left: 4px solid var(--accent-secondary);
+        }
+
+        .unit-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .unit-name-class {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .unit-class-badge {
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 4px;
+            width: max-content;
+            margin-bottom: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .class-marksman { background: rgba(245, 166, 35, 0.15); color: var(--color-marksman); border: 1px solid rgba(245, 166, 35, 0.3); }
+        .class-frontliner { background: rgba(255, 59, 48, 0.15); color: var(--color-frontliner); border: 1px solid rgba(255, 59, 48, 0.3); }
+        .class-rusher { background: rgba(76, 217, 100, 0.15); color: var(--color-rusher); border: 1px solid rgba(76, 217, 100, 0.3); }
+        .class-rifleman { background: rgba(0, 122, 255, 0.15); color: var(--color-rifleman); border: 1px solid rgba(0, 122, 255, 0.3); }
+
+        .unit-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .unit-level {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+        }
+
+        .unit-trait-badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ffd700;
+        }
+
+        .unit-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            font-size: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 6px;
+            color: var(--text-muted);
+        }
+
+        .unit-stat-item span {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .unit-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .btn-small {
+            flex-grow: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-family: var(--font-main);
+        }
+
+        .btn-small:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-small.btn-danger:hover {
+            background: rgba(255, 59, 48, 0.2);
+            border-color: var(--color-frontliner);
+            color: #ff8882;
+        }
+
+        /* Main Panel Layout */
+        .main-panel {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            overflow-y: auto;
+            max-height: calc(100vh - 70px);
+        }
+
+        /* Shop Section */
+        .shop-container {
+            background: rgba(15, 20, 28, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .shop-card {
+            background: rgba(20, 24, 33, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .shop-card:hover {
+            border-color: var(--accent-secondary);
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.1);
+            background: rgba(20, 24, 33, 0.9);
+        }
+
+        .shop-card-price {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 8px;
+            padding: 6px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            color: #ffd700;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), #ff7b00);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(255, 94, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-muted);
+        }
+
+        /* Simulation Controls & Flow */
+        .simulation-container {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 2rem;
+        }
+
+        .sim-setup-card {
+            background: rgba(15, 20, 28, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .difficulty-selector {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .diff-option {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .diff-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .diff-option.active {
+            border-color: var(--accent-secondary);
+            background: rgba(0, 240, 255, 0.08);
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.1);
+        }
+
+        .diff-name {
+            font-family: var(--font-mono);
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .diff-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .slider-header span.val {
+            color: var(--accent-secondary);
+            font-weight: bold;
+            font-family: var(--font-mono);
+        }
+
+        .range-input {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .range-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-secondary);
+            cursor: pointer;
+            box-shadow: 0 0 8px var(--accent-secondary);
+        }
+
+        .btn-simulate {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--accent-secondary), #00a8ff);
+            color: #050505;
+            font-weight: 800;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-mono);
+            box-shadow: 0 4px 15px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-simulate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.5);
+            background: linear-gradient(135deg, #00f0ff, #00d0ff);
+        }
+
+        /* Log Panel */
+        .log-panel {
+            background: rgba(10, 12, 16, 0.8);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 400px;
+        }
+
+        .log-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .log-feed {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding: 1rem;
+            flex-grow: 1;
+            overflow-y: auto;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .log-entry {
+            line-height: 1.4;
+            border-left: 2px solid rgba(255, 255, 255, 0.1);
+            padding-left: 8px;
+        }
+
+        .log-entry.info { border-color: var(--accent-secondary); color: #81ecec; }
+        .log-entry.success { border-color: var(--color-rusher); color: #55efc4; font-weight: bold; }
+        .log-entry.warning { border-color: #ffeaa7; color: #ffeaa7; }
+        .log-entry.danger { border-color: var(--color-frontliner); color: #ff7675; }
+        .log-entry.combat { border-color: var(--text-muted); color: var(--text-muted); }
+
+        /* Analytics Section */
+        .analytics-container {
+            background: rgba(15, 20, 28, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .analytics-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .analysis-question {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 6px;
+        }
+
+        .analysis-answer {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .analysis-answer strong {
+            color: var(--accent-secondary);
+        }
+
+        /* Synergy Badges and Stats */
+        .synergy-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .synergy-tag {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .synergy-tag.active {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.05);
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.15);
+            color: #ffd700;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                max-height: 400px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .simulation-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-title">
+            <h1>Dust March <span>Simulation Prototype</span></h1>
+        </div>
+        <div class="resources-bar">
+            <div class="resource-item" title="Current Campaign Level">
+                Difficulty Level: <strong id="lbl-level" style="color: var(--accent-secondary); padding-left: 4px;">1</strong>
+            </div>
+            <div class="resource-item gold">
+                Gold: <span id="lbl-gold">1000</span>g
+            </div>
+            <div class="resource-item squad">
+                Squad: <span id="lbl-squad-count">0</span> / 6
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Sidebar: Active Squad and Roster -->
+        <aside class="sidebar">
+            <div>
+                <div class="section-title">
+                    <span>Active Squad</span>
+                </div>
+                <div class="sidebar-squad-stats">
+                    <div class="stat-row">
+                        <span>Squad DPS:</span>
+                        <strong id="stat-squad-dps">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Squad HP:</span>
+                        <strong id="stat-squad-hp">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>Active Synergies:</span>
+                        <strong id="stat-active-synergies" style="color: #ffd700;">0</strong>
+                    </div>
+                    <div class="synergy-list" id="active-synergy-tags">
+                        <!-- Synergy tags go here -->
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-title">
+                    <span> Roster (Squad list)</span>
+                </div>
+                <div class="roster-list" id="squad-roster">
+                    <div class="unit-list-empty">Roster empty. Buy units from the shop to start.</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-panel">
+            
+            <!-- Shop Section -->
+            <section class="shop-container">
+                <div class="shop-header">
+                    <div class="section-title" style="margin-bottom: 0;">
+                        <span>Recruitment Shop</span>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" id="btn-reroll">Reroll Shop (<span id="lbl-reroll-cost">100</span>g)</button>
+                    </div>
+                </div>
+                <div class="shop-grid" id="shop-grid">
+                    <!-- Shop slots dynamically rendered -->
+                </div>
+            </section>
+
+            <!-- Combat Simulation Control -->
+            <section class="simulation-container">
+                
+                <!-- Setup Panel -->
+                <div class="sim-setup-card">
+                    <div class="section-title">
+                        <span>Mission Simulator</span>
+                    </div>
+                    
+                    <div class="difficulty-selector" id="difficulty-selector">
+                        <div class="diff-option active" data-difficulty="easy">
+                            <div class="diff-name">Easy</div>
+                            <div class="diff-desc">2 Enemies, 200-400g reward</div>
+                        </div>
+                        <div class="diff-option" data-difficulty="medium">
+                            <div class="diff-name">Medium</div>
+                            <div class="diff-desc">4-5 Enemies, 450-650g reward</div>
+                        </div>
+                        <div class="diff-option" data-difficulty="hard">
+                            <div class="diff-name">Hard</div>
+                            <div class="diff-desc">6-7 Enemies, 650-850g reward</div>
+                        </div>
+                        <div class="diff-option" data-difficulty="final">
+                            <div class="diff-name">Final</div>
+                            <div class="diff-desc">8 Enemies, 1000g reward</div>
+                        </div>
+                    </div>
+
+                    <div class="slider-container">
+                        <div class="slider-header">
+                            <span>Control Multiplier (Manual Positioning Skill)</span>
+                            <span class="val" id="val-control">4.0x</span>
+                        </div>
+                        <input type="range" min="1.0" max="8.0" step="0.5" value="4.0" class="range-input" id="slider-control">
+                        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">
+                            Higher control multiplier reduces enemy survivability by simulating smart manual kiting, spacing, and obstacle utilization.
+                        </div>
+                    </div>
+
+                    <button class="btn-simulate" id="btn-simulate">Launch Mission Simulation</button>
+                </div>
+
+                <!-- Live Logs / Battle Feed -->
+                <div class="log-panel">
+                    <div class="log-header">
+                        <div class="section-title" style="margin-bottom: 0;">
+                            <span>Combat Feed</span>
+                        </div>
+                        <button class="btn-small" id="btn-clear-logs">Clear Logs</button>
+                    </div>
+                    <div class="log-feed" id="log-feed">
+                        <div class="log-entry info">System ready. Set your squad and select a difficulty to simulate.</div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Analytics and Balance Insights -->
+            <section class="analytics-container">
+                <div class="section-title">
+                    <span>Balance Analytics & Diagnostics</span>
+                </div>
+                <div class="analytics-grid">
+                    
+                    <div class="analytics-card">
+                        <div class="analysis-question">Strongest Unit Combinations?</div>
+                        <div class="analysis-answer" id="diag-combos">
+                            No combat data yet. Run simulations to analyze what combinations succeed.
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="analysis-question">Who benefits most from Trait/Stats?</div>
+                        <div class="analysis-answer" id="diag-traits">
+                            Check stats on current squad. Traits modify base stats. Marksman benefits heavily from <strong>Lethal</strong> (+0.5 crit multiplier) due to its base 75% Critical Chance.
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="analysis-question">Class Selection & Popularity</div>
+                        <div class="analysis-answer" id="diag-classes">
+                            Roster composition is blank. Buy units to update selection stats.
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <div class="analysis-question">Dominant Squad Combinations?</div>
+                        <div class="analysis-answer" id="diag-dominant">
+                            We track win rates across simulations. If you run a high-difficulty mission, you will see calculated Pressure vs Capacity.
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JavaScript Game Logic -->
+    <script>
+        // --- 1. Core Data Structures & Game Database ---
+        const UNIT_TEMPLATES = {
+            Marksman: {
+                className: 'Marksman',
+                category: 'Damage',
+                baseHp: 65, // Average of 50-80
+                baseAtk: 70, // Average of 60-80
+                range: 18,
+                fireRate: 1.8,
+                critChance: 0.75,
+                critMultiplier: 2.0,
+                speed: 2,
+                cost: 200,
+                desc: 'Extreme damage and range, low HP. Highly vulnerable.'
+            },
+            Frontliner: {
+                className: 'Frontliner',
+                category: 'Defense',
+                baseHp: 300, // Average of 275-325
+                baseAtk: 25, // Average of 20-30
+                range: 5,
+                fireRate: 1.2,
+                critChance: 0.50,
+                critMultiplier: 2.0,
+                speed: 2,
+                cost: 200,
+                desc: 'Colossal health pool, short range. Perfect shield for DPS.'
+            },
+            Rusher: {
+                className: 'Rusher',
+                category: 'Mobility',
+                baseHp: 125, // Average of 100-150
+                baseAtk: 12,
+                range: 8,
+                fireRate: 0.2, // Rapid fire
+                critChance: 0.10,
+                critMultiplier: 2.0,
+                speed: 4,
+                cost: 200,
+                desc: 'Extremely fast fire rate and movement. Flanker.'
+            },
+            Rifleman: {
+                className: 'Rifleman',
+                category: 'Utility',
+                baseHp: 150, // Average of 125-175
+                baseAtk: 30, // Average of 25-35
+                range: 10,
+                fireRate: 0.8,
+                critChance: 0.10,
+                critMultiplier: 2.0,
+                speed: 3,
+                cost: 100,
+                desc: 'Balanced, flexible, and affordable core unit.'
+            }
+        };
+
+        const TRAITS = {
+            Strong: { name: 'Strong', desc: '+20% ATK', modifier: (stats) => { stats.atk *= 1.2; } },
+            Valiant: { name: 'Valiant', desc: '+15% HP', modifier: (stats) => { stats.hp *= 1.15; } },
+            Lethal: { name: 'Lethal', desc: '+0.5 Crit Mult', modifier: (stats) => { stats.critMultiplier += 0.5; } },
+            EagleEyed: { name: 'Eagle Eyed', desc: '+10% Range', modifier: (stats) => { stats.range *= 1.1; } },
+            Positive: { name: 'Positive', desc: '-10% Fire Rate delay', modifier: (stats) => { stats.fireRate *= 0.9; } }
+        };
+
+        const DIFFICULTY_SETTINGS = {
+            easy: { name: 'Easy', enemyDps: 25, enemyHp: 250, enemyCount: 2, density: 1, timing: 2, minGold: 200, maxGold: 400, expReward: 100 },
+            medium: { name: 'Medium', enemyDps: 25, enemyHp: 250, enemyCount: 4.5, density: 1, timing: 3, minGold: 450, maxGold: 650, expReward: 200 },
+            hard: { name: 'Hard', enemyDps: 25, enemyHp: 250, enemyCount: 6.5, density: 1, timing: 5, minGold: 650, maxGold: 850, expReward: 400 },
+            final: { name: 'Final', enemyDps: 25, enemyHp: 250, enemyCount: 8, density: 1, timing: 6, minGold: 1000, maxGold: 1000, expReward: 800 }
+        };
+
+        // Names generator for fun identity
+        const FIRST_NAMES = ['Aegis', 'Saber', 'Apex', 'Trigger', 'Rogue', 'Titan', 'Viper', 'Phantom', 'Bullet', 'Ghost', 'Specter', 'Spike'];
+        const LAST_NAMES = ['Alpha', 'Delta', 'Zero', 'One', 'Strike', 'Shield', 'Storm', 'Shadow', 'Hawk', 'Prime', 'Nova'];
+
+        function generateRandomName() {
+            const f = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
+            const l = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+            return `${f} ${l}`;
+        }
+
+        // --- 2. State Variables ---
+        let gameState = {
+            gold: 1000,
+            campaignLevel: 1,
+            roster: [], // active and reserve units
+            shopItems: [],
+            rerollCount: 0,
+            selectedDifficulty: 'easy',
+            controlMultiplier: 4.0,
+            simulationHistory: []
+        };
+
+        // --- 3. DOM Elements ---
+        const domGold = document.getElementById('lbl-gold');
+        const domSquadCount = document.getElementById('lbl-squad-count');
+        const domCampaignLevel = document.getElementById('lbl-level');
+        const domRoster = document.getElementById('squad-roster');
+        const domShopGrid = document.getElementById('shop-grid');
+        const domBtnReroll = document.getElementById('btn-reroll');
+        const domLblRerollCost = document.getElementById('lbl-reroll-cost');
+        const domSliderControl = document.getElementById('slider-control');
+        const domValControl = document.getElementById('val-control');
+        const domBtnSimulate = document.getElementById('btn-simulate');
+        const domLogFeed = document.getElementById('log-feed');
+        const domBtnClearLogs = document.getElementById('btn-clear-logs');
+        const domDifficultySelector = document.getElementById('difficulty-selector');
+
+        // Analytics DOM
+        const domDiagCombos = document.getElementById('diag-combos');
+        const domDiagTraits = document.getElementById('diag-traits');
+        const domDiagClasses = document.getElementById('diag-classes');
+        const domDiagDominant = document.getElementById('diag-dominant');
+        
+        // Roster stats
+        const domSquadDps = document.getElementById('stat-squad-dps');
+        const domSquadHp = document.getElementById('stat-squad-hp');
+        const domActiveSynergiesCount = document.getElementById('stat-active-synergies');
+        const domActiveSynergyTags = document.getElementById('active-synergy-tags');
+
+        // --- 4. Initialization & Setup ---
+        window.addEventListener('DOMContentLoaded', () => {
+            initGame();
+        });
+
+        function initGame() {
+            gameState.gold = 1000;
+            gameState.campaignLevel = 1;
+            gameState.roster = [];
+            gameState.rerollCount = 0;
+            gameState.simulationHistory = [];
+            
+            // Add initial default units to roster to start player off
+            addUnitToRoster('Rifleman', 'Strong');
+            addUnitToRoster('Frontliner', 'Valiant');
+
+            refreshRerollCost();
+            generateShop();
+            updateUI();
+            
+            // Log readiness
+            addLogEntry("System initialized with starter squad: 1 Rifleman (Strong) and 1 Frontliner (Valiant)!", "info");
+        }
+
+        // --- 5. Roster & Unit Management Logic ---
+        function addUnitToRoster(className, traitKey = null) {
+            const template = UNIT_TEMPLATES[className];
+            const name = generateRandomName();
+            
+            // Randomly select trait if not provided
+            if (traitKey === null) {
+                const traitKeys = Object.keys(TRAITS);
+                // 70% chance of getting a trait, 30% chance of no trait
+                traitKey = Math.random() < 0.7 ? traitKeys[Math.floor(Math.random() * traitKeys.length)] : null;
+            }
+
+            const unit = {
+                id: 'unit_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+                name: name,
+                className: className,
+                category: template.category,
+                level: 1,
+                exp: 0,
+                baseHp: template.baseHp,
+                baseAtk: template.baseAtk,
+                range: template.range,
+                fireRate: template.fireRate,
+                critChance: template.critChance,
+                critMultiplier: template.critMultiplier,
+                speed: template.speed,
+                trait: traitKey,
+                isActive: true // active squad vs reserve
+            };
+
+            gameState.roster.push(unit);
+            return unit;
+        }
+
+        function getUnitModifiedStats(unit) {
+            let stats = {
+                hp: unit.baseHp + (unit.level - 1) * 12, // Level scaling for HP
+                atk: unit.baseAtk + (unit.level - 1) * 1.5, // Level scaling for ATK
+                range: unit.range,
+                fireRate: unit.fireRate,
+                critChance: unit.critChance,
+                critMultiplier: unit.critMultiplier,
+                speed: unit.speed
+            };
+
+            // Apply trait mods
+            if (unit.trait && TRAITS[unit.trait]) {
+                TRAITS[unit.trait].modifier(stats);
+            }
+
+            // Apply squad synergies (calculate dynamic boosts)
+            const activeSynergies = calculateSquadSynergies();
+            if (activeSynergies.frontlineWall && unit.className === 'Frontliner') {
+                stats.hp *= 1.15; // Frontline Wall synergy: +15% HP for Frontliners
+            }
+            if (activeSynergies.rapidFire && unit.className === 'Rusher') {
+                stats.fireRate *= 0.9; // Rapid Fire synergy: 10% faster attack rate for Rushers
+            }
+            if (activeSynergies.tacticalFocus && unit.className === 'Rifleman') {
+                stats.atk *= 1.15; // Tactical Focus synergy: +15% ATK for Riflemen
+            }
+            if (activeSynergies.eagleEyeBonus && unit.className === 'Marksman') {
+                stats.range *= 1.15; // Eagle Eye synergy: +15% range for Marksman
+            }
+
+            // Calculations
+            stats.dps = (stats.atk * (1 + stats.critChance * (stats.critMultiplier - 1))) / stats.fireRate;
+            return stats;
+        }
+
+        function calculateSquadSynergies() {
+            const activeUnits = gameState.roster.filter(u => u.isActive);
+            const classCounts = {};
+            
+            activeUnits.forEach(u => {
+                classCounts[u.className] = (classCounts[u.className] || 0) + 1;
+            });
+
+            return {
+                frontlineWall: (classCounts['Frontliner'] || 0) >= 2,
+                rapidFire: (classCounts['Rusher'] || 0) >= 2,
+                tacticalFocus: (classCounts['Rifleman'] || 0) >= 2,
+                eagleEyeBonus: (classCounts['Marksman'] || 0) >= 2,
+                hybridForce: Object.keys(classCounts).length >= 4 // 1 of each class
+            };
+        }
+
+        function toggleUnitActive(unitId) {
+            const unit = gameState.roster.find(u => u.id === unitId);
+            if (!unit) return;
+
+            const activeCount = gameState.roster.filter(u => u.isActive).length;
+            if (!unit.isActive && activeCount >= 6) {
+                addLogEntry("Max squad size of 6 units reached. Move someone to reserve first.", "warning");
+                return;
+            }
+
+            unit.isActive = !unit.isActive;
+            updateUI();
+        }
+
+        function sellUnit(unitId) {
+            const index = gameState.roster.findIndex(u => u.id === unitId);
+            if (index === -1) return;
+
+            const unit = gameState.roster[index];
+            const refund = Math.floor(UNIT_TEMPLATES[unit.className].cost * 0.5) + (unit.level - 1) * 20;
+            gameState.gold += refund;
+
+            addLogEntry(`Sold ${unit.name} (${unit.className}) for ${refund}g.`, "info");
+            gameState.roster.splice(index, 1);
+            updateUI();
+        }
+
+        // --- 6. Shop Mechanics ---
+        function getRerollCost() {
+            return 100 + gameState.rerollCount * 25;
+        }
+
+        function refreshRerollCost() {
+            domLblRerollCost.textContent = getRerollCost();
+        }
+
+        function generateShop() {
+            gameState.shopItems = [];
+            const classes = Object.keys(UNIT_TEMPLATES);
+            const traits = Object.keys(TRAITS);
+
+            for (let i = 0; i < 4; i++) {
+                const randClass = classes[Math.floor(Math.random() * classes.length)];
+                // 60% chance of a random trait
+                const randTrait = Math.random() < 0.6 ? traits[Math.floor(Math.random() * traits.length)] : null;
+                const template = UNIT_TEMPLATES[randClass];
+                
+                gameState.shopItems.push({
+                    id: 'shop_' + i + '_' + Date.now(),
+                    className: randClass,
+                    cost: template.cost,
+                    trait: randTrait
+                });
+            }
+        }
+
+        function buyShopItem(shopId) {
+            const shopItemIndex = gameState.shopItems.findIndex(item => item.id === shopId);
+            if (shopItemIndex === -1) return;
+
+            const item = gameState.shopItems[shopItemIndex];
+            
+            if (gameState.gold < item.cost) {
+                addLogEntry("Not enough Gold!", "warning");
+                return;
+            }
+
+            if (gameState.roster.length >= 10) { // arbitrary roster cap
+                addLogEntry("Roster limit (10 units max) reached. Sell someone first.", "warning");
+                return;
+            }
+
+            // Deduct cost
+            gameState.gold -= item.cost;
+
+            // Add to roster
+            const newUnit = addUnitToRoster(item.className, item.trait);
+            
+            // Set active automatically if space is available
+            const activeCount = gameState.roster.filter(u => u.isActive).length;
+            if (activeCount > 6) {
+                newUnit.isActive = false;
+            }
+
+            addLogEntry(`Recruited ${newUnit.name} (${newUnit.className}) with trait [${newUnit.trait || 'None'}] for ${item.cost}g!`, "success");
+
+            // Remove from shop
+            gameState.shopItems.splice(shopItemIndex, 1);
+            updateUI();
+        }
+
+        // --- 7. Combat Simulation Engine ---
+        function simulateMission() {
+            const activeSquad = gameState.roster.filter(u => u.isActive);
+            if (activeSquad.length === 0) {
+                addLogEntry("Cannot start mission: Active Squad is empty!", "danger");
+                return;
+            }
+
+            const diffKey = gameState.selectedDifficulty;
+            const diff = DIFFICULTY_SETTINGS[diffKey];
+            const control = gameState.controlMultiplier;
+
+            // 1. Calculate Squad Stats
+            let totalPlayerHp = 0;
+            let totalPlayerDps = 0;
+
+            activeSquad.forEach(unit => {
+                const stats = getUnitModifiedStats(unit);
+                totalPlayerHp += stats.hp;
+                totalPlayerDps += stats.dps;
+            });
+
+            // 2. Perform deterministics calculations as per game equations
+            // Enemy Survivability = Enemy HP / (Player DPS * Control)
+            const enemySurvivability = diff.enemyHp / (totalPlayerDps * control);
+            
+            // Enemy Threat = Enemy DPS * Enemy Survivability
+            const enemyThreat = diff.enemyDps * enemySurvivability;
+            
+            // Total Pressure = Enemy Threat * Enemy Count * Density * Timing
+            const totalPressure = enemyThreat * diff.enemyCount * diff.density * diff.timing;
+
+            // Player Survivability = Player HP / (Enemy DPS * Enemy Count)
+            const playerSurvivability = totalPlayerHp / (diff.enemyDps * diff.enemyCount);
+
+            // Total Capacity = Player DPS * Player Survivability * Control
+            const totalCapacity = totalPlayerDps * playerSurvivability * control;
+
+            // Determine Success vs Defeat
+            const isVictory = totalCapacity >= totalPressure;
+
+            // Compute damage taken in %
+            const damageRatio = Math.min(1.0, totalPressure / totalCapacity);
+            
+            addLogEntry(`--- SIMULATING MISSION: [${diff.name}] Stage (Day ${gameState.campaignLevel}) ---`, "info");
+            addLogEntry(`Squad DPS: ${totalPlayerDps.toFixed(1)} | Squad HP: ${totalPlayerHp.toFixed(0)} | Control: ${control}x`, "combat");
+            addLogEntry(`Calculated Pressure: ${totalPressure.toFixed(1)} vs Capacity: ${totalCapacity.toFixed(1)}`, "combat");
+            addLogEntry(`Enemy Survivability: ${enemySurvivability.toFixed(2)}s | Player Survivability: ${playerSurvivability.toFixed(2)}s`, "combat");
+
+            if (isVictory) {
+                const goldGained = Math.floor(Math.random() * (diff.maxGold - diff.minGold + 1)) + diff.minGold;
+                const expGained = diff.expReward;
+                
+                gameState.gold += goldGained;
+                gameState.campaignLevel += 1;
+
+                addLogEntry(`🏆 VICTORY! Squad capacity overcame the threat. Reward: ${goldGained} Gold & ${expGained} EXP!`, "success");
+                
+                // Distribute EXP & Level Up Units
+                activeSquad.forEach(unit => {
+                    unit.exp += expGained;
+                    let expNeeded = getExpNeeded(unit.level);
+                    let leveledUp = false;
+                    
+                    while (unit.exp >= expNeeded) {
+                        unit.exp -= expNeeded;
+                        unit.level += 1;
+                        leveledUp = true;
+                        expNeeded = getExpNeeded(unit.level);
+                    }
+
+                    if (leveledUp) {
+                        addLogEntry(`✨ ${unit.name} (${unit.className}) leveled up to Level ${unit.level}! Stats increased.`, "info");
+                    }
+                });
+
+                // Record Sim details for diagnostics
+                gameState.simulationHistory.push({
+                    difficulty: diffKey,
+                    composition: activeSquad.map(u => u.className),
+                    traits: activeSquad.map(u => u.trait).filter(t => t),
+                    result: 'win',
+                    pressure: totalPressure,
+                    capacity: totalCapacity
+                });
+
+            } else {
+                addLogEntry(`💀 DEFEAT! Squad capacity was overwhelmed. Heavy casualties suffered.`, "danger");
+                
+                // On Death / Injury mechanism:
+                // Randomly injure or remove a character permanently
+                const casualtyIndex = Math.floor(Math.random() * activeSquad.length);
+                const casualty = activeSquad[casualtyIndex];
+
+                // 40% chance of death, 60% chance of heavy injury (temporarily unavailable or stats reduced)
+                if (Math.random() < 0.40) {
+                    addLogEntry(`Casualty Report: ${casualty.name} (${casualty.className}) was KIA (Permanently removed).`, "danger");
+                    // Remove from roster
+                    const rosterIdx = gameState.roster.findIndex(u => u.id === casualty.id);
+                    if (rosterIdx !== -1) gameState.roster.splice(rosterIdx, 1);
+                } else {
+                    addLogEntry(`Injury Report: ${casualty.name} (${casualty.className}) is heavily injured and resting.`, "warning");
+                }
+
+                // Record Sim details
+                gameState.simulationHistory.push({
+                    difficulty: diffKey,
+                    composition: activeSquad.map(u => u.className),
+                    traits: activeSquad.map(u => u.trait).filter(t => t),
+                    result: 'loss',
+                    pressure: totalPressure,
+                    capacity: totalCapacity
+                });
+            }
+
+            // Post-combat refresh
+            generateShop();
+            gameState.rerollCount = 0;
+            refreshRerollCost();
+            updateUI();
+            updateDiagnostics();
+        }
+
+        function getExpNeeded(level) {
+            if (level >= 10) {
+                return 100 + (level - 1) * 50 + 500;
+            }
+            return 100 + (level - 1) * 50;
+        }
+
+        // --- 8. UI Rendering ---
+        function updateUI() {
+            // Stats & Resources
+            domGold.textContent = gameState.gold;
+            domCampaignLevel.textContent = gameState.campaignLevel;
+
+            const activeUnits = gameState.roster.filter(u => u.isActive);
+            domSquadCount.textContent = activeUnits.length;
+
+            // Recalculate Squad stats for sidebar display
+            let totalSquadDps = 0;
+            let totalSquadHp = 0;
+            activeUnits.forEach(u => {
+                const stats = getUnitModifiedStats(u);
+                totalSquadDps += stats.dps;
+                totalSquadHp += stats.hp;
+            });
+            domSquadDps.textContent = totalSquadDps.toFixed(1);
+            domSquadHp.textContent = totalSquadHp.toFixed(0);
+
+            // Synergies list
+            const synergies = calculateSquadSynergies();
+            domActiveSynergyTags.innerHTML = '';
+            let activeSynergyCount = 0;
+
+            const synergyConfig = [
+                { key: 'frontlineWall', label: '🛡️ Frontline Wall (2+)', desc: 'Frontliners get +15% HP' },
+                { key: 'rapidFire', label: '⚡ Rapid Fire (2+)', desc: 'Rushers attack 10% faster' },
+                { key: 'tacticalFocus', label: '🎯 Tactical Focus (2+)', desc: 'Riflemen get +15% ATK' },
+                { key: 'eagleEyeBonus', label: '👁️ Eagle Eye (2+)', desc: 'Marksman range +15%' },
+                { key: 'hybridForce', label: '🌀 Combined Arms (4 Diff)', desc: 'Squad synergy boost' }
+            ];
+
+            synergyConfig.forEach(cfg => {
+                if (synergies[cfg.key]) {
+                    activeSynergyCount++;
+                    const tag = document.createElement('div');
+                    tag.className = 'synergy-tag active';
+                    tag.title = cfg.desc;
+                    tag.textContent = cfg.label;
+                    domActiveSynergyTags.appendChild(tag);
+                } else {
+                    const tag = document.createElement('div');
+                    tag.className = 'synergy-tag';
+                    tag.title = cfg.desc;
+                    tag.textContent = cfg.label;
+                    domActiveSynergyTags.appendChild(tag);
+                }
+            });
+            domActiveSynergiesCount.textContent = activeSynergyCount;
+
+            // Roster Sidebar Render
+            renderRoster();
+
+            // Shop Grid Render
+            renderShop();
+        }
+
+        function renderRoster() {
+            domRoster.innerHTML = '';
+            if (gameState.roster.length === 0) {
+                domRoster.innerHTML = '<div class="unit-list-empty">Roster empty. Buy units from the shop to start.</div>';
+                return;
+            }
+
+            gameState.roster.forEach(unit => {
+                const stats = getUnitModifiedStats(unit);
+                const card = document.createElement('div');
+                card.className = `unit-card ${unit.isActive ? 'active-squad-member' : ''}`;
+
+                card.innerHTML = `
+                    <div class="unit-card-header">
+                        <div class="unit-name-class">
+                            <span class="unit-class-badge class-${unit.className.toLowerCase()}">${unit.className}</span>
+                            <span class="unit-name">${unit.name}</span>
+                        </div>
+                        <div class="unit-level">Lv. ${unit.level}</div>
+                    </div>
+                    
+                    ${unit.trait ? `<div class="unit-trait-badge" style="width: max-content;">✨ Trait: ${TRAITS[unit.trait].name}</div>` : ''}
+
+                    <div class="unit-stats-grid">
+                        <div class="unit-stat-item">HP: <span>${stats.hp.toFixed(0)}</span></div>
+                        <div class="unit-stat-item">ATK: <span>${stats.atk.toFixed(1)}</span></div>
+                        <div class="unit-stat-item">Range: <span>${stats.range.toFixed(1)}</span></div>
+                        <div class="unit-stat-item">DPS: <span>${stats.dps.toFixed(1)}</span></div>
+                    </div>
+
+                    <div class="unit-actions">
+                        <button class="btn-small btn-toggle-active" onclick="toggleUnitActive('${unit.id}')">
+                            ${unit.isActive ? 'Reserve' : 'Deploy'}
+                        </button>
+                        <button class="btn-small btn-danger" onclick="sellUnit('${unit.id}')">Sell</button>
+                    </div>
+                `;
+                domRoster.appendChild(card);
+            });
+        }
+
+        function renderShop() {
+            domShopGrid.innerHTML = '';
+            if (gameState.shopItems.length === 0) {
+                domShopGrid.innerHTML = '<div class="unit-list-empty" style="grid-column: 1/-1;">Shop is empty. Reroll or simulate next wave to restock.</div>';
+                return;
+            }
+
+            gameState.shopItems.forEach(item => {
+                const template = UNIT_TEMPLATES[item.className];
+                const card = document.createElement('div');
+                card.className = 'shop-card';
+                card.onclick = () => buyShopItem(item.id);
+
+                card.innerHTML = `
+                    <div class="unit-class-badge class-${item.className.toLowerCase()}">${item.className}</div>
+                    <div style="font-weight: 600; font-size: 1.1rem; color: var(--text-primary);">${item.className}</div>
+                    <div style="font-size: 0.75rem; color: var(--text-muted); min-height: 36px;">${template.desc}</div>
+                    
+                    ${item.trait ? `
+                        <div style="display: flex; align-items: center; gap: 4px; font-size: 0.75rem; color: #ffd700;">
+                            <span>✨</span> <strong>${item.trait}</strong> (${TRAITS[item.trait].desc})
+                        </div>
+                    ` : `
+                        <div style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">No Trait</div>
+                    `}
+
+                    <div class="shop-card-price">
+                        <span>🪙</span> ${item.cost}g
+                    </div>
+                `;
+                domShopGrid.appendChild(card);
+            });
+        }
+
+        // --- 9. Analytics & Diagnostics Engine ---
+        function updateDiagnostics() {
+            const history = gameState.simulationHistory;
+            const currentRoster = gameState.roster;
+            const activeSquad = currentRoster.filter(u => u.isActive);
+
+            // --- A. Class Popularity Selection Stats ---
+            const allRecruitedClasses = {};
+            currentRoster.forEach(u => {
+                allRecruitedClasses[u.className] = (allRecruitedClasses[u.className] || 0) + 1;
+            });
+
+            let classPopText = `Current Roster breakdown:<br>`;
+            if (currentRoster.length === 0) {
+                classPopText += `<em>Roster empty.</em>`;
+            } else {
+                Object.keys(UNIT_TEMPLATES).forEach(cls => {
+                    const count = allRecruitedClasses[cls] || 0;
+                    const pct = ((count / currentRoster.length) * 100).toFixed(0);
+                    classPopText += `• <strong>${cls}</strong>: ${count} (${pct}%)<br>`;
+                });
+            }
+            domDiagClasses.innerHTML = classPopText;
+
+            // --- B. Strongest Unit Combinations & Synergy Insights ---
+            let comboText = `Analysis of simulated runs:<br>`;
+            if (history.length === 0) {
+                comboText += `No simulations recorded yet. Try running missions.`;
+            } else {
+                const wins = history.filter(h => h.result === 'win').length;
+                const winPct = ((wins / history.length) * 100).toFixed(0);
+                comboText += `Overall Win Rate: <strong>${winPct}%</strong> (${wins}/${history.length} runs)<br>`;
+
+                // Find composition of wins
+                const compSuccess = {};
+                history.forEach(h => {
+                    if (h.result === 'win') {
+                        const sortedComp = [...h.composition].sort().join(', ');
+                        compSuccess[sortedComp] = (compSuccess[sortedComp] || 0) + 1;
+                    }
+                });
+
+                let bestComp = "None";
+                let bestWins = 0;
+                Object.keys(compSuccess).forEach(comp => {
+                    if (compSuccess[comp] > bestWins) {
+                        bestWins = compSuccess[comp];
+                        bestComp = comp;
+                    }
+                });
+
+                if (bestWins > 0) {
+                    comboText += `Most successful composition:<br><em>${bestComp}</em> (${bestWins} wins)`;
+                } else {
+                    comboText += `No victories recorded yet to analyze combinations.`;
+                }
+            }
+            domDiagCombos.innerHTML = comboText;
+
+            // --- C. Dominant Combinations & Class usage warning ---
+            let dominantText = `Balance Check warnings:<br>`;
+            const unusedClasses = [];
+            Object.keys(UNIT_TEMPLATES).forEach(cls => {
+                if (!allRecruitedClasses[cls]) {
+                    unusedClasses.push(cls);
+                }
+            });
+
+            if (unusedClasses.length > 0) {
+                dominantText += `⚠️ Unselected Classes: <strong>${unusedClasses.join(', ')}</strong> are never recruited/retained in your squad.<br>`;
+            } else {
+                dominantText += `✅ Healthy mix: All classes have been recruited at least once.<br>`;
+            }
+
+            // Check if frontliners or rushers are heavily stacked
+            const frontlinerCount = activeSquad.filter(u => u.className === 'Frontliner').length;
+            const marksmanCount = activeSquad.filter(u => u.className === 'Marksman').length;
+            const rusherCount = activeSquad.filter(u => u.className === 'Rusher').length;
+
+            if (frontlinerCount >= 3) {
+                dominantText += `💡 <em>Frontliner Stack</em>: Highly tanky, but DPS might scale too slowly on Hard/Final stages.`;
+            } else if (marksmanCount >= 3) {
+                dominantText += `💡 <em>Marksman Stack</em>: Massive damage potential, but extremely fragile; any burst pressure will easily wipe them out.`;
+            } else if (rusherCount >= 3) {
+                dominantText += `💡 <em>Rusher Stack</em>: Maximum mobility & rapid fire, dominates low-difficulty waves quickly.`;
+            } else {
+                dominantText += `Balanced composition: Roster displays decent versatility.`;
+            }
+            domDiagDominant.innerHTML = dominantText;
+
+            // --- D. Trait synergy recommendations ---
+            let traitText = `Current active trait effects:<br>`;
+            const activeTraits = activeSquad.map(u => u.trait).filter(t => t);
+            if (activeTraits.length === 0) {
+                traitText += `No active traits in squad. Recruit units with traits to optimize performance!`;
+            } else {
+                const traitCounts = {};
+                activeTraits.forEach(t => {
+                    traitCounts[t] = (traitCounts[t] || 0) + 1;
+                });
+                
+                Object.keys(traitCounts).forEach(t => {
+                    traitText += `• <strong>${t}</strong>: x${traitCounts[t]} in squad.<br>`;
+                });
+
+                // Synergy advice based on math
+                const lethalMarksmen = activeSquad.filter(u => u.className === 'Marksman' && u.trait === 'Lethal').length;
+                if (lethalMarksmen > 0) {
+                    traitText += `🔥 <strong>Synergy Lock</strong>: Marksman + Lethal active! Critical damage multiplier increased.`;
+                }
+            }
+            domDiagTraits.innerHTML = traitText;
+        }
+
+        // --- 10. Helper Utilities ---
+        function addLogEntry(message, type = "info") {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+            domLogFeed.appendChild(entry);
+            domLogFeed.scrollTop = domLogFeed.scrollHeight;
+        }
+
+        // --- 11. Event Listeners ---
+        domBtnReroll.addEventListener('click', () => {
+            const cost = getRerollCost();
+            if (gameState.gold < cost) {
+                addLogEntry("Not enough gold to reroll shop!", "warning");
+                return;
+            }
+            gameState.gold -= cost;
+            gameState.rerollCount++;
+            generateShop();
+            refreshRerollCost();
+            updateUI();
+            addLogEntry(`Shop rerolled (reroll count: ${gameState.rerollCount}).`, "info");
+        });
+
+        // Difficulty select
+        domDifficultySelector.addEventListener('click', (e) => {
+            const option = e.target.closest('.diff-option');
+            if (!option) return;
+
+            document.querySelectorAll('.diff-option').forEach(opt => opt.classList.remove('active'));
+            option.classList.add('active');
+            
+            gameState.selectedDifficulty = option.dataset.difficulty;
+            addLogEntry(`Selected difficulty set to: ${DIFFICULTY_SETTINGS[gameState.selectedDifficulty].name}`, "info");
+        });
+
+        // Slider control
+        domSliderControl.addEventListener('input', (e) => {
+            gameState.controlMultiplier = parseFloat(e.target.value);
+            domValControl.textContent = gameState.controlMultiplier.toFixed(1) + 'x';
+        });
+
+        // Clear logs
+        domBtnClearLogs.addEventListener('click', () => {
+            domLogFeed.innerHTML = '';
+        });
+
+        // Simulate
+        domBtnSimulate.addEventListener('click', () => {
+            simulateMission();
+        });
+    </script>
+</body>
+</html>
